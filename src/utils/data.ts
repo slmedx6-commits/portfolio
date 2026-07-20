@@ -36,7 +36,7 @@ export interface Certification {
 
 export const personalInfo = {
   name: 'SHAIK SALEEM',
-  title: 'AI Developer & Full Stack Engineer',
+  title: 'Python Developer & Data Science and Machine Learning Enthusiast',
   phone: '6305560683',
   email: 'slmedx6@gmail.com',
   address: 'Nellore Dst, Andhra Pradesh, India',
