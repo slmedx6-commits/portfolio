@@ -22,14 +22,14 @@ const ParticleBackground: React.FC = () => {
 
     let animationFrameId: number;
     let particles: Particle[] = [];
-    const maxParticles = window.innerWidth < 768 ? 40 : 100;
-    const connectionDist = 120;
+    const maxParticles = window.innerWidth < 768 ? 50 : 120;
+    const connectionDist = 135;
     
     // Mouse coords
     const mouse = {
       x: -1000,
       y: -1000,
-      radius: 150
+      radius: 170
     };
 
     const resizeCanvas = () => {
@@ -46,9 +46,9 @@ const ParticleBackground: React.FC = () => {
         particles.push({
           x: Math.random() * w,
           y: Math.random() * h,
-          vx: (Math.random() - 0.5) * 0.5,
-          vy: (Math.random() - 0.5) * 0.5,
-          radius: Math.random() * 2 + 1
+          vx: (Math.random() - 0.5) * 0.4,
+          vy: (Math.random() - 0.5) * 0.4,
+          radius: Math.random() * 2 + 0.8
         });
       }
     };
@@ -77,10 +77,10 @@ const ParticleBackground: React.FC = () => {
       const h = canvas.height;
       const isDark = theme === 'dark';
 
-      // Colors based on theme
-      const particleColor = isDark ? 'rgba(99, 102, 241, 0.4)' : 'rgba(99, 102, 241, 0.2)';
-      const lineColor = isDark ? 'rgba(6, 182, 212, 0.08)' : 'rgba(6, 182, 212, 0.05)';
-      const mouseLineColor = isDark ? 'rgba(168, 85, 247, 0.15)' : 'rgba(168, 85, 247, 0.08)';
+      // Colors based on theme (Electric Violet and Neon Cyan highlights)
+      const particleColor = isDark ? 'rgba(139, 92, 246, 0.35)' : 'rgba(139, 92, 246, 0.15)';
+      const lineColor = isDark ? 'rgba(6, 182, 212, 0.06)' : 'rgba(6, 182, 212, 0.04)';
+      const mouseLineColor = isDark ? 'rgba(236, 72, 153, 0.12)' : 'rgba(236, 72, 153, 0.06)';
 
       // 1. Update and draw particles
       particles.forEach((p) => {
@@ -88,20 +88,22 @@ const ParticleBackground: React.FC = () => {
         p.x += p.vx;
         p.y += p.vy;
 
-        // Bounce borders
-        if (p.x < 0 || p.x > w) p.vx *= -1;
-        if (p.y < 0 || p.y > h) p.vy *= -1;
+        // Wrap around borders instead of sharp bounce
+        if (p.x < 0) p.x = w;
+        if (p.x > w) p.x = 0;
+        if (p.y < 0) p.y = h;
+        if (p.y > h) p.y = 0;
 
-        // Mouse interaction (repulsion)
+        // Mouse interaction (gentle attraction toward mouse path)
         if (mouse.x > -1000) {
           const dx = p.x - mouse.x;
           const dy = p.y - mouse.y;
           const dist = Math.sqrt(dx * dx + dy * dy);
           if (dist < mouse.radius) {
             const force = (mouse.radius - dist) / mouse.radius;
-            // Push particles gently
-            p.x += (dx / dist) * force * 1.2;
-            p.y += (dy / dist) * force * 1.2;
+            // Draw particles slightly closer to the path
+            p.x -= (dx / dist) * force * 0.4;
+            p.y -= (dy / dist) * force * 0.4;
           }
         }
 
@@ -125,9 +127,9 @@ const ParticleBackground: React.FC = () => {
             ctx.beginPath();
             ctx.moveTo(p1.x, p1.y);
             ctx.lineTo(mouse.x, mouse.y);
-            const alpha = (1 - mDist / mouse.radius) * 0.4;
-            ctx.strokeStyle = mouseLineColor.replace('0.15', alpha.toString()).replace('0.08', alpha.toString());
-            ctx.lineWidth = 1;
+            const alpha = (1 - mDist / mouse.radius) * 0.35;
+            ctx.strokeStyle = mouseLineColor.replace('0.12', alpha.toString()).replace('0.06', alpha.toString());
+            ctx.lineWidth = 0.8;
             ctx.stroke();
           }
         }
@@ -143,9 +145,9 @@ const ParticleBackground: React.FC = () => {
             ctx.beginPath();
             ctx.moveTo(p1.x, p1.y);
             ctx.lineTo(p2.x, p2.y);
-            const alpha = (1 - dist / connectionDist) * 0.2;
-            ctx.strokeStyle = lineColor.replace('0.08', alpha.toString()).replace('0.05', alpha.toString());
-            ctx.lineWidth = 0.8;
+            const alpha = (1 - dist / connectionDist) * 0.15;
+            ctx.strokeStyle = lineColor.replace('0.06', alpha.toString()).replace('0.04', alpha.toString());
+            ctx.lineWidth = 0.6;
             ctx.stroke();
           }
         }

@@ -408,7 +408,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
   };
 
   return (
-    <div className="p-6 sm:p-8 rounded-2xl border border-gray-200/60 dark:border-gray-800/40 bg-white/70 dark:bg-gray-900/50 backdrop-blur-md flex flex-col justify-between shadow-sm hover:shadow-xl hover:border-indigo-500/30 dark:hover:border-cyan-400/30 transition-all duration-300 group">
+    <div className="p-6 sm:p-8 rounded-2xl bg-white/70 dark:bg-gray-900/50 backdrop-blur-md flex flex-col justify-between shadow-sm hover:border-indigo-500/30 dark:hover:border-cyan-400/30 transition-all duration-300 group glow-card">
       <div>
         {/* Card Header Nav */}
         <div className="flex items-center justify-between border-b border-gray-100 dark:border-gray-800/60 pb-3.5 mb-5 text-xs">

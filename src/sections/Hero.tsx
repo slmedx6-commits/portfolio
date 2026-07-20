@@ -17,11 +17,16 @@ const Hero: React.FC = () => {
   };
 
   const itemVariants = {
-    hidden: { y: 30, opacity: 0 },
+    hidden: { y: 40, opacity: 0 },
     visible: {
       y: 0,
       opacity: 1,
-      transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] as any }
+      transition: { 
+        type: 'spring',
+        stiffness: 90,
+        damping: 15,
+        mass: 0.8
+      } as any
     }
   };
 
