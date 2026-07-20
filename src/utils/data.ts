@@ -35,15 +35,16 @@ export interface Certification {
 }
 
 export const personalInfo = {
-  name: 'Shaik Saleem',
+  name: 'SHAIK SALEEM',
   title: 'AI Developer & Full Stack Engineer',
   phone: '6305560683',
   email: 'slmedx6@gmail.com',
-  address: 'As Peta, Nellore Dst, Andhra Pradesh, India',
+  address: 'Nellore Dst, Andhra Pradesh, India',
   github: 'https://github.com/slmedx6-commits',
   linkedin: 'https://www.linkedin.com/in/sk-saleem-2b7518344/',
-  summary: 'Aspiring AI Developer and Full Stack Engineer pursuing Master of Computer Applications (MCA). Hands-on experience developing intelligent platforms, analytical engines, and scalable management tools. Proven capability in Python Full Stack, Machine Learning, Data Analytics, and interactive UI/UX design.',
-  languages: ['English', 'Telugu', 'Urdu', 'Hindi']
+  portfolioUrl: 'https://portfolio-slmedx.vercel.app',
+  summary: 'Dedicated IT graduate skilled in Python programming, data analysis, Machine Learning and web development. Experienced in Python libraries (Pandas, NumPy, Matplotlib, Seaborn, Scikit-learn), problem-solving, debugging, and delivering clean, functional applications. Hands-on experience from internships in web development and data science.',
+  languages: ['English', 'Hindi', 'Urdu', 'Telugu']
 };
 
 export const skillsData = {
@@ -149,10 +150,10 @@ export const achievements = [
 export const projects: Project[] = [
   {
     id: 'promptforge-ai',
-    title: 'PromptForge AI',
+    title: 'Prompt Forge AI',
     category: 'AI',
-    technologies: ['Python', 'FastAPI', 'React', 'OpenAI API', 'Data Science'],
-    description: 'An AI-powered web application that analyzes and transforms simple user inputs into highly structured, optimized, and professional prompts suitable for multiple LLM platforms (like ChatGPT, Claude, and Gemini).',
+    technologies: ['Python', 'AI', 'ML', 'Data Science', 'FastAPI', 'React'],
+    description: 'Developed an AI-powered platform that converts simple prompts into professional AI-ready prompts. Implemented intelligent prompt analysis, enhancement workflows, and added Data Science and Machine Learning Analysis.',
     features: [
       'Real-time prompt engineering analyzer with detailed structure breakdown.',
       'Multi-platform output optimizer (ChatGPT, Claude, Gemini, Midjourney templates).',
@@ -170,8 +171,8 @@ export const projects: Project[] = [
     id: 'revalua-ai',
     title: 'ReValua AI',
     category: 'Machine Learning',
-    technologies: ['Python Full Stack', 'TensorFlow', 'scikit-learn', 'Django', 'Data Science'],
-    description: 'An AI-powered resale pricing engine that inspects second-hand items. The application estimates product age, manufacturer, and original value, subsequently recommending a fair resale price using Machine Learning models.',
+    technologies: ['Python', 'AI', 'ML', 'Data Science', 'TensorFlow', 'Django'],
+    description: 'AI app that analyses second-hand product images to estimate age, manufacturing year, market value and resale price using machine learning models.',
     features: [
       'Image analysis using computer vision to identify item type, brand, and condition.',
       'Dynamic valuation model that integrates product age, release year, and depreciation variables.',

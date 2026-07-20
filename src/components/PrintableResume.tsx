@@ -8,12 +8,11 @@ const PrintableResume: React.FC = () => {
       <div className="text-center border-b border-black pb-4 mb-4">
         <h1 className="text-2xl font-bold uppercase tracking-wide">{personalInfo.name}</h1>
         <p className="text-sm font-semibold text-gray-700 mt-1">{personalInfo.title}</p>
-        <div className="flex flex-wrap justify-center gap-x-4 gap-y-1 text-[10px] text-gray-600 mt-2 font-mono">
-          <span>Phone: +91 {personalInfo.phone}</span>
+        <div className="flex flex-wrap justify-center gap-x-4 gap-y-1 text-[10px] text-gray-650 mt-2 font-mono">
           <span>Email: {personalInfo.email}</span>
-          <span>Location: Nellore, AP, India</span>
           <span>LinkedIn: linkedin.com/in/sk-saleem-2b7518344</span>
           <span>GitHub: github.com/slmedx6-commits</span>
+          <span>Portfolio: portfolio-slmedx.vercel.app</span>
         </div>
       </div>
 
