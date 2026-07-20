@@ -28,8 +28,8 @@ const Footer: React.FC = () => {
               </span>
               <span className="text-indigo-500 font-mono text-sm">.dev</span>
             </a>
-            <p className="text-sm text-gray-500 dark:text-gray-400 max-w-xs">
-              AI Developer & Full Stack Engineer crafting high-performance intelligent interfaces and scalable computational backends.
+            <p className="text-xs text-gray-500 dark:text-gray-400 max-w-sm leading-relaxed">
+              Python Developer & Data Science and Machine Learning Enthusiast, dedicated to building high-impact automation pipelines and extracting actionable business intelligence from complex datasets.
             </p>
             {/* Social Icons */}
             <div className="flex gap-4 mt-2">

@@ -49,8 +49,9 @@ const Certifications: React.FC = () => {
                       {cert.name}
                     </span>
                     <a
-                      href="#certifications"
-                      onClick={(e) => e.preventDefault()}
+                      href={cert.credentialUrl || '#'}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="text-xs text-indigo-500 dark:text-cyan-400 font-semibold hover:underline inline-flex items-center gap-1 mt-1"
                     >
                       View Credential

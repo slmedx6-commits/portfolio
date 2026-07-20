@@ -36,7 +36,7 @@ const Contact: React.FC = () => {
     }
   };
 
-  const handleFormSubmit = (e: React.FormEvent) => {
+  const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const errors = validateForm();
     if (Object.keys(errors).length > 0) {
@@ -45,13 +45,35 @@ const Contact: React.FC = () => {
     }
 
     setIsSubmitting(true);
-    // Simulate API request
-    setTimeout(() => {
+    
+    try {
+      const response = await fetch('https://formspree.io/f/xvgowzjb', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          name: formState.name,
+          email: formState.email,
+          subject: formState.subject || 'Portfolio Contact Form Inquiry',
+          message: formState.message
+        })
+      });
+
+      if (response.ok) {
+        setSubmitSuccess(true);
+        setFormState({ name: '', email: '', subject: '', message: '' });
+        setTimeout(() => setSubmitSuccess(false), 5000);
+      } else {
+        alert('Failed to send message. Please try copy-pasting the email address directly.');
+      }
+    } catch (err) {
+      console.error(err);
+      alert('An error occurred. Please try copy-pasting the email address directly.');
+    } finally {
       setIsSubmitting(false);
-      setSubmitSuccess(true);
-      setFormState({ name: '', email: '', subject: '', message: '' });
-      setTimeout(() => setSubmitSuccess(false), 5000);
-    }, 1800);
+    }
   };
 
   return (

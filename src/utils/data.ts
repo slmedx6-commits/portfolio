@@ -32,6 +32,7 @@ export interface Certification {
   name: string;
   issuer: string;
   year: string;
+  credentialUrl?: string;
 }
 
 export const personalInfo = {
@@ -126,17 +127,20 @@ export const certifications: Certification[] = [
   {
     name: 'Python Full Stack Development Certificate',
     issuer: 'Brainovision Solutions',
-    year: '2024'
+    year: '2024',
+    credentialUrl: '/certificates/python_fullstack.pdf'
   },
   {
     name: 'Data Science Internship Certification',
     issuer: 'Brainovision Solutions',
-    year: '2024'
+    year: '2024',
+    credentialUrl: '/certificates/data_science.pdf'
   },
   {
     name: 'Webinar Participation Certificate',
     issuer: 'Tech Mindsparc Innovations',
-    year: '2024'
+    year: '2024',
+    credentialUrl: '/certificates/webinar.pdf'
   }
 ];
 
