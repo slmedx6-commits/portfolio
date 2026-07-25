@@ -95,9 +95,114 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
     }, 600);
   };
 
+  // Widget State: CodeAlpha ML Suite
+  const [mlTask, setMlTask] = useState<'credit' | 'audio' | 'ocr' | 'health'>('credit');
+  const [mlRunning, setMlRunning] = useState(false);
+  const [mlResult, setMlResult] = useState<string | null>(null);
+
+  const handleRunMlTask = (task: 'credit' | 'audio' | 'ocr' | 'health') => {
+    setMlTask(task);
+    setMlRunning(true);
+    setMlResult(null);
+    setTimeout(() => {
+      setMlRunning(false);
+      if (task === 'credit') {
+        setMlResult('FICO Score: 838 | Tier: Low Risk (Excellent) | Default Prob: 2.04% | Gini: 0.9687');
+      } else if (task === 'audio') {
+        setMlResult('Extracted 86 MFCCs | Voice Signal -> Predicted Emotion: Happy (Confidence: 99.55%)');
+      } else if (task === 'ocr') {
+        setMlResult('28x28 Pixel Vectorizer -> Recognized Digit: "8" (Confidence: 99.97%)');
+      } else {
+        setMlResult('XGBoost Clinical Diagnostics -> High Risk (Disease Detected) | Probability: 85.17%');
+      }
+    }, 1200);
+  };
+
   // Renders the customized interactive component based on project theme
   const renderInteractiveWidget = () => {
     switch (project.theme) {
+      case 'ml-suite':
+        return (
+          <div className="flex flex-col gap-3 text-left p-4 rounded-xl bg-gray-950 text-indigo-400 font-mono text-xs h-64 border border-indigo-500/25 relative overflow-hidden">
+            <span className="text-[10px] text-gray-500 uppercase tracking-widest border-b border-gray-800 pb-1 flex justify-between items-center">
+              <span className="flex items-center gap-1.5">
+                <Cpu className="w-3.5 h-3.5 text-indigo-400 animate-pulse" />
+                CodeAlpha Multi-Modal ML Engine
+              </span>
+              <span className="text-[9px] text-emerald-400 font-bold">Auto-Detect Active</span>
+            </span>
+
+            {/* Task Selector Tabs */}
+            <div className="grid grid-cols-4 gap-1">
+              <button
+                onClick={() => handleRunMlTask('credit')}
+                className={`py-1 px-1 text-[10px] font-bold rounded cursor-pointer transition-all ${
+                  mlTask === 'credit' ? 'bg-indigo-600 text-white' : 'bg-gray-900 text-gray-400 hover:bg-gray-850'
+                }`}
+              >
+                FinTech
+              </button>
+              <button
+                onClick={() => handleRunMlTask('audio')}
+                className={`py-1 px-1 text-[10px] font-bold rounded cursor-pointer transition-all ${
+                  mlTask === 'audio' ? 'bg-indigo-600 text-white' : 'bg-gray-900 text-gray-400 hover:bg-gray-850'
+                }`}
+              >
+                Audio AI
+              </button>
+              <button
+                onClick={() => handleRunMlTask('ocr')}
+                className={`py-1 px-1 text-[10px] font-bold rounded cursor-pointer transition-all ${
+                  mlTask === 'ocr' ? 'bg-indigo-600 text-white' : 'bg-gray-900 text-gray-400 hover:bg-gray-850'
+                }`}
+              >
+                Digit OCR
+              </button>
+              <button
+                onClick={() => handleRunMlTask('health')}
+                className={`py-1 px-1 text-[10px] font-bold rounded cursor-pointer transition-all ${
+                  mlTask === 'health' ? 'bg-indigo-600 text-white' : 'bg-gray-900 text-gray-400 hover:bg-gray-850'
+                }`}
+              >
+                HealthTech
+              </button>
+            </div>
+
+            {/* Pipeline Execution Display */}
+            <div className="flex-1 bg-gray-900/60 p-3 rounded border border-gray-850 flex flex-col justify-between">
+              <div className="text-[10px] text-gray-400 flex items-center justify-between">
+                <span>Active Pipeline: <strong className="text-white uppercase">{mlTask} Classifier</strong></span>
+                <button
+                  onClick={() => handleRunMlTask(mlTask)}
+                  disabled={mlRunning}
+                  className="bg-indigo-600 hover:bg-indigo-500 text-white px-2.5 py-0.5 rounded text-[10px] font-bold cursor-pointer transition-colors"
+                >
+                  {mlRunning ? 'Executing...' : 'Run Pipeline'}
+                </button>
+              </div>
+
+              {mlRunning ? (
+                <div className="flex items-center justify-center gap-2 py-4">
+                  <span className="w-2 h-2 bg-indigo-400 rounded-full animate-ping" />
+                  <span className="text-[11px] text-indigo-300">Auto-scaling & Extracting Features...</span>
+                </div>
+              ) : mlResult ? (
+                <motion.div
+                  initial={{ opacity: 0, y: 5 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="p-2 bg-indigo-950/60 border border-indigo-500/30 rounded text-[10px] text-emerald-300 leading-relaxed"
+                >
+                  {mlResult}
+                </motion.div>
+              ) : (
+                <div className="text-[10px] text-gray-500 italic">
+                  Click 'Run Pipeline' to test real-time model inference.
+                </div>
+              )}
+            </div>
+          </div>
+        );
+
       case 'ai':
         return (
           <div className="flex flex-col gap-4 text-left p-4 rounded-xl bg-gray-950 text-emerald-400 font-mono text-xs h-64 overflow-y-auto border border-emerald-500/25 relative">

@@ -181,7 +181,7 @@ export const projects: Project[] = [
     results: 'Achieved 0.9818 ROC-AUC on Credit Scoring, 0.9955 Macro F1 on Speech Emotion Recognition, 100% Accuracy on Digit Recognition, and 0.9150 ROC-AUC on Disease Risk Diagnostics.',
     githubUrl: 'https://github.com/slmedx6-commits/CodeAlpha-MachineLearning-Production-Suite',
     demoUrl: '#',
-    theme: 'ml'
+    theme: 'ml-suite'
   },
   {
     id: 'promptforge-ai',
