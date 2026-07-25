@@ -85,6 +85,17 @@ export const skillsData = {
 
 export const internships: Internship[] = [
   {
+    role: 'Machine Learning Intern',
+    company: 'CodeAlpha',
+    period: '2024 - Present',
+    type: 'Internship',
+    highlights: [
+      'Engineered 4 production-grade Machine Learning & Deep Learning pipelines covering FinTech, Audio AI, Computer Vision, and HealthTech.',
+      'Developed 1D-CNN acoustic signal extractors for speech emotion recognition and 2D CNN image OCR classifiers.',
+      'Built automated dataset auto-detection engines for hyperparameter tuning, cross-validation, and diagnostic plot exports.'
+    ]
+  },
+  {
     role: 'Python Full Stack Intern',
     company: 'Brainovision',
     period: '2024 (Online)',
@@ -152,6 +163,26 @@ export const achievements = [
 ];
 
 export const projects: Project[] = [
+  {
+    id: 'codealpha-ml-suite',
+    title: 'CodeAlpha ML Production Suite',
+    category: 'Machine Learning',
+    technologies: ['Python', 'Scikit-Learn', 'PyTorch (CNN)', 'XGBoost', 'Librosa', 'OpenCV / PIL', 'Pandas'],
+    description: 'Enterprise-grade multi-modal Machine Learning production suite featuring Credit Risk Scoring (FinTech), 1D-CNN Speech Emotion Recognition (Audio AI), Optical Digit OCR (Computer Vision), and XGBoost Disease Diagnostics (HealthTech) with automated dataset auto-detection.',
+    features: [
+      'Auto-Dataset Engine: Drops custom CSVs into pipeline to automatically infer target labels, categorical features, and numerical scales.',
+      'Task 1 FinTech Credit Risk: Calculates FICO scores (300-850), Gini (0.9687), and Kolmogorov-Smirnov (0.8900) statistics.',
+      'Task 2 Audio Emotion AI: Extracts 86 acoustic MFCC features from .wav/.mp3 signals across RAVDESS/TESS/EMO-DB datasets.',
+      'Task 3 Digit OCR: Vectorizes 28x28 grayscale images/PDFs with Convolutional Neural Networks (100% Accuracy).',
+      'Task 4 HealthTech Diagnostics: Tuned XGBoost/Random Forest models maximizing Recall/Sensitivity for clinical intervention.'
+    ],
+    challenges: 'Designing a unified data preprocessor capable of handling arbitrary target label names, variable categorical encodings, and micro-datasets under 10 samples without cross-validation failures.',
+    role: 'Lead Machine Learning Engineer. Designed end-to-end modular architectures, signal feature extractors, candidate tuning loops, and automated visual diagnostic reports.',
+    results: 'Achieved 0.9818 ROC-AUC on Credit Scoring, 0.9955 Macro F1 on Speech Emotion Recognition, 100% Accuracy on Digit Recognition, and 0.9150 ROC-AUC on Disease Risk Diagnostics.',
+    githubUrl: 'https://github.com/slmedx6-commits/CodeAlpha-MachineLearning-Production-Suite',
+    demoUrl: '#',
+    theme: 'ml'
+  },
   {
     id: 'promptforge-ai',
     title: 'Prompt Forge AI',
